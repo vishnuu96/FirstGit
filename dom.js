@@ -26,4 +26,13 @@ ht.style.borderBottom='solid 3px #000'
 document.getElementById('item').style.color='green';
 // document.getElementById("item").style.font = "italic bold 20px arial,serif";
 const it=document.getElementById('item');
-it.textContent='ADD ITEMS';
+// it.textContent='ADD ITEMS';
+it.style.fontWeight='bold'
+
+// getelementsbyclassname
+var items= document.getElementsByClassName('list-group-item');
+items[2].style.backgroundColor='green';
+ 
+for(i=0;i<items.length;i++){
+    items[i].style.fontWeight='bold';
+}
