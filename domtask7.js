@@ -62,3 +62,17 @@ var h1=document.querySelector('header h1');
  newDiv.style.fontSize='30px'
 console.log(newDiv);
 
+var newli=document.createElement('li');
+
+var newliText=document.createTextNode('hello world');
+newli.appendChild(newliText);
+// var ul=document.querySelector('.list-group');
+// var item=itemList.firstElementChild
+// ul.insertBefore(newli,item)
+
+var ul=document.querySelector('.list-group');
+var item=document.querySelector('.list-group-item');
+ul.insertBefore(newli,item);
+
+// var ul=document.querySelector('.list-group');
+// ul.innerHTML='<li>hello world</li>'+ul.innerHTML
