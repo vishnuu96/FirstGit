@@ -3,7 +3,7 @@
 const form=document.querySelector('#my-form')
 form.addEventListener('submit',(e)=>{
     e.preventDefault();
-    const arr=new Array();
+    
     const userName=e.target.name.value;
     const email=e.target.email.value;
     const number=e.target.phone.value
@@ -12,32 +12,28 @@ form.addEventListener('submit',(e)=>{
         email:email,
         number:number
     }
-    arr.push(person);
-    arr.forEach(element => {
-         const body = document.querySelector('body')
-        const li=document.createElement("li");
-        li.appendChild(document.createTextNode(`name:${person.name}; email:${person.email}; number:${person.number}`))
-        body.appendChild(li)
-        localStorage.setItem(element.name,JSON.stringify(person))
-    });
+    localStorage.setItem(person.name,JSON.stringify(person))
+    showUserOnScreen(person)
 
-    // for(i=0;i<arr.length;i++){
-    //     const body = document.querySelector('body')
-    //     const li=document.createElement("li");
-    //     li.appendChild(document.createTextNode(`name: ${person.name};email:${person.email}`))
-    //     body.appendChild(li)
-    //     localStorage.setItem(arr[i].name,JSON.stringify(person))
-    
-    // }
-    
-    // arr.forEach(details)
-    // function details(){
-    
-    // const body = document.querySelector('body')
-    // const li=document.createElement("li");
-    // li.appendChild(document.createTextNode(`name: ${person.name};email:${person.email}`))
-    // body.appendChild(li)
-    // localStorage.setItem(details.name,JSON.stringify(person))
-    // }
+  
 
+
+})
+function showUserOnScreen(person){
+  const parentElem = document.querySelector('#listOfItems')
+ const childElem=document.createElement("li");
+ childElem.appendChild(document.createTextNode(`name:${person.name}; email:${person.email}; number:${person.number}`))
+//  childElem.textContent="name: "+person.name+" email: "+person.email+ " number:  "+person.number
+ parentElem.appendChild(childElem)
+}
+
+window.addEventListener("DOMContentLoaded",()=>{
+    const userDetails=localStorage
+    const userDetailsKey=Object.keys(userDetails)
+    for(let i=0;i<userDetailsKey.length;i++){
+        const id=userDetailsKey[i]
+        const user=userDetails[id]
+        const userObj=JSON.parse(user)
+        showUserOnScreen(userObj)
+    }
 })
